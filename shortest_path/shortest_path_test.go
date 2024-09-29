@@ -13,11 +13,21 @@ func TestShortestPath(t *testing.T) {
 		{0, 7, 3},
 		{4, 3, 2},
 	}
+	g := Graph{
+		{{to: 4, weight: 2}},
+		{{to: 0, weight: 1}, {to: 2, weight: 1}, {to: 4, weight: 4}, {to: 5, weight: 3}},
+		{{to: 5, weight: 1}},
+		{},
+		{{to: 3, weight: 3}, {to: 7, weight: 1}},
+		{{to: 3, weight: 5}, {to: 6, weight: 2}},
+		{{to: 3, weight: 2}},
+		{{to: 3, weight: 1}},
+	}
 
 	for _, tc := range testCases {
-		got := ShortestPath(tc.from, tc.to)
+		got := g.ShortestPath(tc.from, tc.to)
 		if got != tc.expected {
-			t.Log(topologicalSort())
+			t.Log(g.TopologicallySortedNodes())
 			t.Fatalf(
 				"Expected ShortestPath(%v, %v) to equal %v, but got %v",
 				tc.from,
