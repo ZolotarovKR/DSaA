@@ -20,15 +20,16 @@ func TestLcs(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		got := Lcs(tc.xs, tc.ys)
-		if len(got) != tc.expected {
+		lcs := Lcs(tc.xs, tc.ys)
+		actual := len(lcs)
+		if actual != tc.expected {
 			t.Logf("xs: %v", string(tc.xs))
 			t.Logf("ys: %v", string(tc.ys))
-			t.Logf("got: %v (length: %v)", string(got), len(got))
+			t.Logf("LCS: %v", string(lcs))
 			t.Fatalf(
 				"Expected length of LCS is %v, but actual is %v",
 				tc.expected,
-				len(got),
+				len(lcs),
 			)
 		}
 
