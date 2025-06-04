@@ -5,13 +5,13 @@ def log2(n: int) -> int:
 class SparseTable:
     def __init__(self, xs: list[int]) -> None:
         self.__st = [xs]
-        for k in range(1, log2(len(xs)) + 1):
+        for j in range(1, log2(len(xs)) + 1):
             self.__st.append([])
-            for i in range(0, len(xs) - (1 << k) + 1):
-                self.__st[k].append(
+            for i in range(0, len(xs) - (1 << j) + 1):
+                self.__st[j].append(
                     min(
-                        self.__st[k - 1][i],
-                        self.__st[k - 1][i + (1 << (k - 1))],
+                        self.__st[j - 1][i],
+                        self.__st[j - 1][i + (1 << (j - 1))],
                     )
                 )
 
