@@ -1,8 +1,3 @@
-import random
-
-N: int = random.randint(17, 32)
-
-
 def log2(n: int) -> int:
     return n.bit_length() - 1
 
@@ -29,9 +24,18 @@ class SparseTable:
         )
 
 
-xs = list(random.choices(range(0, 256), k=N))
-st = SparseTable(xs)
+def main() -> None:
+    import random
 
-for l in range(len(xs)):
-    for r in range(l, len(xs)):
-        assert min(xs[l : r + 1]) == st.query(l, r)
+    n = random.randint(17, 32)
+
+    xs = list(random.choices(range(0, 256), k=n))
+    st = SparseTable(xs)
+
+    for l in range(len(xs)):
+        for r in range(l, len(xs)):
+            assert min(xs[l : r + 1]) == st.query(l, r)
+
+
+if __name__ == "__main__":
+    main()
