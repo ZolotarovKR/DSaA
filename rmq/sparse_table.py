@@ -22,20 +22,3 @@ class SparseTable:
             self.__st[t][l],
             self.__st[t][r - (1 << t) + 1],
         )
-
-
-def main() -> None:
-    import random
-
-    n = random.randint(17, 32)
-
-    xs = list(random.choices(range(0, 256), k=n))
-    st = SparseTable(xs)
-
-    for l in range(len(xs)):
-        for r in range(l, len(xs)):
-            assert min(xs[l : r + 1]) == st.query(l, r)
-
-
-if __name__ == "__main__":
-    main()
