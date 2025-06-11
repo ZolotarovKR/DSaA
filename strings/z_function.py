@@ -21,7 +21,7 @@ def find_matches(pat: str, txt: str):
     n = len(txt)
     return (
         i
-        for i, length in enumerate(z_function(pat + "#" + txt)[m + 1 : m + n - 1])
+        for i, length in enumerate(z_function(pat + "#" + txt)[m + 1 : n + 2])
         if length == m
     )
 
