@@ -24,3 +24,8 @@ def find_matches(pat: str, txt: str):
         for i, length in enumerate(z_function(pat + "#" + txt)[m + 1 : m + n - 1])
         if length == m
     )
+
+
+def count_distinct_substrings(s: str):
+    n = len(s)
+    return sum(n - i - max(z_function(s[i:])) for i in range(0, n))
