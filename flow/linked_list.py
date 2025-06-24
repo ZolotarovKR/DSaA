@@ -18,14 +18,14 @@ class LinkedList[T]:
 
     @classmethod
     def singleton(cls, value: T) -> LinkedList[T]:
-        return LinkedList(Node(value , None))
+        return LinkedList(Node(value, None))
 
     def cons(self, value: T) -> LinkedList[T]:
         return LinkedList(Node(value, self.ptr))
 
     def head(self) -> Node[T]:
         if self.ptr is None:
-            raise ValueError('head of empty list')
+            raise ValueError("head of empty list")
         return self.ptr
 
     def tail(self) -> LinkedList[T]:
