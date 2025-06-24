@@ -14,11 +14,11 @@ class LinkedList[T]:
 
     @classmethod
     def empty(cls) -> LinkedList[T]:
-        return LinkedList(None)
+        return cls(None)
 
     @classmethod
     def singleton(cls, value: T) -> LinkedList[T]:
-        return LinkedList(Node(value, None))
+        return cls(Node(value, None))
 
     def cons(self, value: T) -> LinkedList[T]:
         return LinkedList(Node(value, self.ptr))
