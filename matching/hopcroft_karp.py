@@ -61,17 +61,12 @@ def find_maximum_matching(
     cap = (
         [[1 if 1 <= i <= m else 0 for i in range(m + n + 2)]]
         + [
-            [
-                1
-                if 1 <= j <= m
-                and m + 1 <= i <= m + n
-                and i - m - 1 in adj_list[j - 1]
-                or m + 1 <= j <= m + n
-                and i == m + n + 1
-                else 0
-                for i in range(m + n + 2)
-            ]
-            for j in range(1, m + n + 1)
+            [1 if i - m - 1 in adj_list[j - 1] else 0 for i in range(m + n + 2)]
+            for j in range(1, m + 1)
+        ]
+        + [
+            [1 if i == m + n + 1 else 0 for i in range(m + n + 2)]
+            for _ in range(m + 1, m + n + 1)
         ]
         + [[0 for _ in range(m + n + 2)]]
     )
